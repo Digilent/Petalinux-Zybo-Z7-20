@@ -1,0 +1,12 @@
+/project-spec/configs/config.old
+/project-spec/configs/rootfs_config.old
+/build/
+/images/
+/.petalinux/*
+!/.petalinux/metadata
+*.o
+*.jou
+*.log
+/BOOT.BIN
+/pre-built/linux/images/rootfs.ext4
+
