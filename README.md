@@ -4,16 +4,6 @@
 
 #### Warning: You should only use this repo when it is checked out on a release tag
 
-## TODO
-
-Do the following before release
-
-* double check rootfs inclusions.
-* consider removing pulse
-* Point back to Digilent u-boot
-* release pre-built
-
-
 ## BSP Features
 
 This petalinux project targets the Vivado block diagram project found here: https://github.com/Digilent/Zybo-Z7-20-base-linux.
