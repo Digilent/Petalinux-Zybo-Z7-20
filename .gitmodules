@@ -1,3 +1,3 @@
 [submodule "Zybo-Z7-20/project-spec/meta-user/recipes-apps/digilent-apps"]
 	path = Zybo-Z7-20/project-spec/meta-user/recipes-apps/digilent-apps
-	url = https://github.com/digilent/digilent-apps.git
+	url = https://github.com/Digilent/digilent-apps.git
