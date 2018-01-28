@@ -207,11 +207,10 @@ sync
 ```
 
 The following commands will also stretch the file system so that you can use the additional space of your SD card. Be sure to replace the
-block device node as you did above, and also XG needs to be replaced with the size of the second partition on your SD card (so if your 
-2nd partition is 3 GiB, you should use 3G):
+block device node as you did above:
 
 ```
-sudo resize2fs /dev/sdX2 XG
+sudo resize2fs /dev/sdX2
 sync
 ```
 
