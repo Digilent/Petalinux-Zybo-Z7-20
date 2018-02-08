@@ -149,3 +149,13 @@
 		reg = <0x1a>;
 	};
 };
+
+&axi_gpio_led {
+	compatible = "generic-uio";
+};
+
+
+&axi_gpio_sw_btn {
+	compatible = "generic-uio";
+};
+

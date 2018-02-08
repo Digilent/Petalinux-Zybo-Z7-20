@@ -54,6 +54,10 @@ echo -e '\033[9;0]' > /dev/tty1
   seem to be causing any known functionality issues. When enabled, ethernet was not functional in Linux. See commented device tree lines
   for how to enable.
 * Audio is currently completely non-functional
+* To support using the generic UIO driver we have to override the bootargs. This is sloppy, and we should explore modifying our
+  demos/libraries to use modprobe to load the uio driver as a module and set the of_id=generic-uio parameter at load time. Then
+  we could stop overriding the bootargs in the device tree and also keep the generic uio driver as a module (which is petalinux's
+  default) instead of building it into the kernel.
 
 ## Quick-Start Guide
 
