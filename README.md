@@ -1,6 +1,6 @@
 # Zybo Z7-20 Petalinux BSP Project
 
-## Built for Petalinux 2017.2
+## Built for Petalinux 2017.4
 
 #### Warning: You should only use this repo when it is checked out on a release tag
 
@@ -20,15 +20,12 @@ The project includes the following features by default:
 * U-boot environment variables can be overriden during SD boot by including uEnv.txt
   in the root directory of the SD card (see u-boot documentation).
 
-### Digilent Petalinux Apps (Coming Soon)
+### Digilent Petalinux Apps 
 
-The next releases of this project will contain demo apps for:
-
-* Lightweight library and demo for changing the HDMI output resolution without an X server
-* HDMI input library for controlling the input video stream and a demo that passes it through
-  to HDMI output with zero-copy
-* UIO library and command line utility for controlling GPIO devices like onboard buttons, switches and LEDs
-* UIO library and demo for controlling the PWM IP core attached to the RGB LEDs.
+This project includes the Digilent-apps repository, a set of linux libraries, utilities and demos that are packaged as Petalinux 
+apps so they can easily be included with Petalinux projects. These apps add various board specific funtionality, such as controlling
+GPIO devices and RGB LEDs from the command line. For complete documentation on these apps, see the repository documentation: 
+https://github.com/Digilent/digilent-apps.
 
 ## Known Issues
 
@@ -67,17 +64,6 @@ section above for a list of problems you may encounter and work arounds.
 
 This guide assumes you are using Ubuntu 16.04.3 LTS. Digilent highly recommends using Ubuntu 16.04.x LTS, as this is what we are most familiar with, and 
 cannot guarantee that we will be able to replicate problems you encounter on other Linux distributions.
-
-### Run the pre-built image from SD
-
-1. Obtain a microSD card that has its first partition formatted as a FAT filesystem.
-2. Copy _pre-built/linux/images/BOOT.BIN_ and _pre-built/linux/images/image.ub_ to the first partition of your SD card.
-3. Eject the SD card from your computer and insert it into the Zybo Z7
-4. Attach a power source and select it with JP5 (note that using USB for power may not provide sufficient current)
-5. If not already done to provide power, attach a microUSB cable between the computer and the Zybo Z7
-6. Open a terminal program (such as minicom) and connect to the Zybo Z7 with 115200/8/N/1 settings (and no Hardware flow control). The Zybo Z7 UART typically shows up as /dev/ttyUSB1
-7. Optionally attach the Zybo Z7 to a network using ethernet or an HDMI monitor.
-8. Press the PS-SRST button to restart the Zybo Z7. You should see the boot process at the terminal and eventually a root prompt.
 
 ### Install the Petalinux tools
 
@@ -118,7 +104,7 @@ Finally, download the petalinux installer from Xilinx and run the following (do 
 
 ```
 cd ~/Downloads
-./petalinux-v2017.2-final-installer.run /opt/pkg/petalinux
+./petalinux-v2017.4-final-installer.run /opt/pkg/petalinux
 ```
 
 Follow the onscreen instructions to complete the installation.
@@ -131,6 +117,17 @@ Whenever you want to run any petalinux commands, you will need to first start by
 source /opt/pkg/petalinux/settings.sh
 ```
 
+### Download the petalinux project
+
+There are two ways to obtain the project. If you plan on version controlling your project you should clone this repository using the following:
+
+```
+git clone --recursive https://github.com/Digilent/Petalinux-Zybo-Z7-20.git
+```
+If you are not planning on version controlling your project and want a simpler release package, go to https://github.com/Digilent/Petalinux-Zybo-Z7-20/releases/
+and download the most recent .bsp file available there for the version of Petalinux you wish to use.
+
+
 ### Generate project
 
 If you have obtained the project source directly from github, then you should simply _cd_ into the Petalinux project directory. If you have downloaded the 
@@ -142,12 +139,25 @@ petalinux-create -t project -s <path to .bsp file>
 
 This will create a new petalinux project in your current working directory, which you should then _cd_ into.
 
+
+### Run the pre-built image from SD
+
+#### Note: The pre-built images are only included with the .bsp release. If you cloned the project source directly, skip this section. 
+
+1. Obtain a microSD card that has its first partition formatted as a FAT filesystem.
+2. Copy _pre-built/linux/images/BOOT.BIN_ and _pre-built/linux/images/image.ub_ to the first partition of your SD card.
+3. Eject the SD card from your computer and insert it into the Zybo Z7
+4. Attach a power source and select it with JP5 (note that using USB for power may not provide sufficient current)
+5. If not already done to provide power, attach a microUSB cable between the computer and the Zybo Z7
+6. Open a terminal program (such as minicom) and connect to the Zybo Z7 with 115200/8/N/1 settings (and no Hardware flow control). The Zybo Z7 UART typically shows up as /dev/ttyUSB1
+7. Optionally attach the Zybo Z7 to a network using ethernet or an HDMI monitor.
+8. Press the PS-SRST button to restart the Zybo Z7. You should see the boot process at the terminal and eventually a root prompt.
+
 ### Build the petalinux project
 
 Run the following commands to build the petalinux project with the default options:
 
 ```
-petalinux-config --oldconfig
 petalinux-build
 petalinux-package --boot --force --fsbl images/linux/zynq_fsbl.elf --fpga images/linux/system_wrapper.bit --u-boot
 ```
@@ -234,16 +244,11 @@ Eject the SD card from your computer, then do the following:
 This section is only relevant for those who wish to upstream their work or version control their own project correctly on Github.
 Note the project should be released configured as initramfs for consistency, unless there is very good reason to release it with SD rootfs.
 
-#### Warning: image.ub must be less than 100 MB, or github will break and the image likely won't work
-
 ```
 petalinux-package --prebuilt --clean --fpga images/linux/system_wrapper.bit -a images/linux/image.ub:images/image.ub 
 petalinux-build -x distclean
 petalinux-build -x mrproper
 petalinux-package --bsp --force --output ../releases/Petalinux-Zybo-Z7-20-20XX.X-X.bsp -p ./
-```
-Remove TMPDIR setting from project-spec/configs/config (this is done automatically for bsp project).
-```
 cd ..
 git status # to double-check
 git add .

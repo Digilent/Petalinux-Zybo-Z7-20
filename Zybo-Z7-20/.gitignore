@@ -2,11 +2,13 @@
 /project-spec/configs/rootfs_config.old
 /build/
 /images/
+/pre-built/
 /.petalinux/*
 !/.petalinux/metadata
 *.o
 *.jou
 *.log
+/project-spec/meta-plnx-generated/
+/components/plnx_workspace
 /BOOT.BIN
-/pre-built/linux/images/rootfs.ext4
 

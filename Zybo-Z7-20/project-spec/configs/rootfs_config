@@ -1222,7 +1222,6 @@ CONFIG_run-postinsts=y
 # CONFIG_apr is not set
 # CONFIG_apr-dbg is not set
 # CONFIG_apr-dev is not set
-# CONFIG_apr-bin is not set
 
 #
 # apr-util 
@@ -1230,7 +1229,6 @@ CONFIG_run-postinsts=y
 # CONFIG_apr-util is not set
 # CONFIG_apr-util-dev is not set
 # CONFIG_apr-util-dbg is not set
-# CONFIG_apr-util-bin is not set
 
 #
 # attr 
@@ -1274,7 +1272,6 @@ CONFIG_run-postinsts=y
 # CONFIG_boost-dev is not set
 # CONFIG_boost-program-options is not set
 # CONFIG_boost-iostreams is not set
-# CONFIG_boost-exception is not set
 # CONFIG_boost-dbg is not set
 # CONFIG_boost-log is not set
 
@@ -1339,7 +1336,6 @@ CONFIG_run-postinsts=y
 # CONFIG_flac is not set
 # CONFIG_flac-dbg is not set
 # CONFIG_libflacPLUSPLUS is not set
-# CONFIG_liboggflacPLUSPLUS is not set
 # CONFIG_libflac is not set
 # CONFIG_flac-dev is not set
 
@@ -1725,7 +1721,6 @@ CONFIG_run-postinsts=y
 #
 # CONFIG_libusb-compat is not set
 # CONFIG_libusb-compat-dev is not set
-# CONFIG_libusb-compat-bin is not set
 # CONFIG_libusb-compat-dbg is not set
 
 #
@@ -2025,7 +2020,6 @@ CONFIG_ncurses=y
 # neon 
 #
 # CONFIG_neon is not set
-# CONFIG_neon-bin is not set
 # CONFIG_neon-dev is not set
 # CONFIG_neon-dbg is not set
 
@@ -2151,7 +2145,6 @@ CONFIG_ncurses=y
 # speex 
 #
 # CONFIG_speex is not set
-# CONFIG_speex-bin is not set
 # CONFIG_speex-dev is not set
 # CONFIG_speex-dbg is not set
 
@@ -2338,6 +2331,7 @@ CONFIG_alsa-states=y
 # CONFIG_eudev-dbg is not set
 # CONFIG_eudev-hwdb is not set
 # CONFIG_udev-cache is not set
+CONFIG_udev-extraconf=y
 
 #
 # fbset 
@@ -2370,15 +2364,11 @@ CONFIG_libstdcPLUSPLUS=y
 # gcc-sanitizers 
 #
 # CONFIG_gcc-sanitizers is not set
-# CONFIG_libtsan-dev is not set
 # CONFIG_libubsan-dev is not set
 # CONFIG_libubsan is not set
 # CONFIG_gcc-sanitizers-dbg is not set
 # CONFIG_libasan is not set
-# CONFIG_liblsan is not set
-# CONFIG_libtsan is not set
 # CONFIG_libasan-dev is not set
-# CONFIG_liblsan-dev is not set
 
 #
 # gcr 
@@ -2408,6 +2398,9 @@ CONFIG_glib-2.0=y
 #
 # glibc 
 #
+# CONFIG_glibc is not set
+# CONFIG_glibc-dev is not set
+# CONFIG_glibc-dbg is not set
 CONFIG_ldd=y
 
 #
@@ -2454,10 +2447,8 @@ CONFIG_ldd=y
 # gst-plugins-good 
 #
 # CONFIG_gst-plugins-good is not set
-# CONFIG_gst-plugins-good-glib is not set
 # CONFIG_gst-plugins-good-dev is not set
 # CONFIG_gst-plugins-good-meta is not set
-# CONFIG_gst-plugins-good-apps is not set
 # CONFIG_gst-plugins-good-dbg is not set
 
 #
@@ -2482,7 +2473,6 @@ CONFIG_ldd=y
 #
 # CONFIG_gstreamer1.0-plugins-good is not set
 # CONFIG_gstreamer1.0-plugins-good-meta is not set
-# CONFIG_gstreamer1.0-plugins-good-apps is not set
 # CONFIG_gstreamer1.0-plugins-good-dev is not set
 # CONFIG_gstreamer1.0-plugins-good-dbg is not set
 
@@ -2949,19 +2939,12 @@ CONFIG_packagegroup-core-ssh-dropbear=y
 # qtcharts 
 #
 # CONFIG_qtcharts is not set
-# CONFIG_qtcharts-tools-dbg is not set
 # CONFIG_qtcharts-mkspecs is not set
-# CONFIG_qtcharts-tools is not set
-# CONFIG_qtcharts-examples-dbg is not set
 # CONFIG_qtcharts-dev is not set
-# CONFIG_qtcharts-qmlplugins-dbg is not set
-# CONFIG_qtcharts-plugins is not set
 # CONFIG_qtcharts-dbg is not set
 # CONFIG_qtcharts-examples is not set
-# CONFIG_qtcharts-examples-dev is not set
 # CONFIG_qtcharts-qmlplugins is not set
 # CONFIG_qtcharts-qmldesigner is not set
-# CONFIG_qtcharts-plugins-dbg is not set
 
 #
 # qtconnectivity 
@@ -2994,16 +2977,8 @@ CONFIG_packagegroup-core-ssh-dropbear=y
 # CONFIG_qtenginio-qmlplugins is not set
 # CONFIG_qtenginio-mkspecs is not set
 # CONFIG_qtenginio-dbg is not set
-# CONFIG_qtenginio-qmlplugins-dbg is not set
-# CONFIG_qtenginio-plugins-dbg is not set
-# CONFIG_qtenginio-tools is not set
-# CONFIG_qtenginio-examples-dev is not set
-# CONFIG_qtenginio-qmldesigner is not set
-# CONFIG_qtenginio-tools-dbg is not set
-# CONFIG_qtenginio-examples-dbg is not set
 # CONFIG_qtenginio-dev is not set
 # CONFIG_qtenginio-examples is not set
-# CONFIG_qtenginio-plugins is not set
 
 #
 # qtimageformats 
@@ -3041,24 +3016,18 @@ CONFIG_packagegroup-core-ssh-dropbear=y
 #
 # CONFIG_qtquick1 is not set
 # CONFIG_qtquick1-tools is not set
-# CONFIG_qtquick1-tools-dbg is not set
 # CONFIG_qtquick1-examples-dev is not set
 # CONFIG_qtquick1-qmlplugins is not set
-# CONFIG_qtquick1-plugins-dbg is not set
 # CONFIG_qtquick1-plugins is not set
 # CONFIG_qtquick1-examples is not set
-# CONFIG_qtquick1-qmldesigner is not set
 # CONFIG_qtquick1-dev is not set
 # CONFIG_qtquick1-mkspecs is not set
 # CONFIG_qtquick1-dbg is not set
-# CONFIG_qtquick1-qmlplugins-dbg is not set
-# CONFIG_qtquick1-examples-dbg is not set
 
 #
 # qtquickcontrols 
 #
 # CONFIG_qtquickcontrols is not set
-# CONFIG_qtquickcontrols-qmlplugins-dbg is not set
 # CONFIG_qtquickcontrols-dbg is not set
 # CONFIG_qtquickcontrols-examples is not set
 # CONFIG_qtquickcontrols-dev is not set
@@ -3079,51 +3048,28 @@ CONFIG_packagegroup-core-ssh-dropbear=y
 #
 # CONFIG_qtsensors is not set
 # CONFIG_qtsensors-dbg is not set
-# CONFIG_qtsensors-tools is not set
 # CONFIG_qtsensors-examples-dev is not set
-# CONFIG_qtsensors-qmldesigner is not set
 # CONFIG_qtsensors-mkspecs is not set
-# CONFIG_qtsensors-qmlplugins-dbg is not set
 # CONFIG_qtsensors-examples is not set
 # CONFIG_qtsensors-dev is not set
 # CONFIG_qtsensors-plugins is not set
-# CONFIG_qtsensors-examples-dbg is not set
 # CONFIG_qtsensors-qmlplugins is not set
-# CONFIG_qtsensors-plugins-dbg is not set
-# CONFIG_qtsensors-tools-dbg is not set
 
 #
 # qtserialport 
 #
 # CONFIG_qtserialport is not set
-# CONFIG_qtserialport-qmldesigner is not set
 # CONFIG_qtserialport-mkspecs is not set
-# CONFIG_qtserialport-plugins-dbg is not set
 # CONFIG_qtserialport-dev is not set
-# CONFIG_qtserialport-qmlplugins is not set
 # CONFIG_qtserialport-examples is not set
 # CONFIG_qtserialport-dbg is not set
-# CONFIG_qtserialport-tools is not set
-# CONFIG_qtserialport-tools-dbg is not set
-# CONFIG_qtserialport-plugins is not set
-# CONFIG_qtserialport-examples-dev is not set
-# CONFIG_qtserialport-examples-dbg is not set
-# CONFIG_qtserialport-qmlplugins-dbg is not set
 
 #
 # qtsvg 
 #
 # CONFIG_qtsvg is not set
-# CONFIG_qtsvg-tools-dbg is not set
 # CONFIG_qtsvg-plugins is not set
-# CONFIG_qtsvg-qmldesigner is not set
 # CONFIG_qtsvg-mkspecs is not set
-# CONFIG_qtsvg-tools is not set
-# CONFIG_qtsvg-plugins-dbg is not set
-# CONFIG_qtsvg-examples-dbg is not set
-# CONFIG_qtsvg-qmlplugins is not set
-# CONFIG_qtsvg-examples-dev is not set
-# CONFIG_qtsvg-qmlplugins-dbg is not set
 # CONFIG_qtsvg-dbg is not set
 # CONFIG_qtsvg-dev is not set
 # CONFIG_qtsvg-examples is not set
@@ -3147,7 +3093,6 @@ CONFIG_packagegroup-core-ssh-dropbear=y
 # CONFIG_qttools-mkspecs is not set
 # CONFIG_qttools-dbg is not set
 # CONFIG_qttools-tools is not set
-# CONFIG_qttools-qmlplugins is not set
 # CONFIG_qttools-plugins is not set
 # CONFIG_qttools-dev is not set
 
@@ -3155,7 +3100,6 @@ CONFIG_packagegroup-core-ssh-dropbear=y
 # qttranslations 
 #
 # CONFIG_qttranslations is not set
-# CONFIG_qttranslations-tools-dbg is not set
 # CONFIG_qttranslations-qthelp is not set
 # CONFIG_qttranslations-assistant is not set
 # CONFIG_qttranslations-qtwebsockets is not set
@@ -3183,19 +3127,11 @@ CONFIG_packagegroup-core-ssh-dropbear=y
 # qtwebchannel 
 #
 # CONFIG_qtwebchannel is not set
-# CONFIG_qtwebchannel-tools-dbg is not set
 # CONFIG_qtwebchannel-dev is not set
-# CONFIG_qtwebchannel-examples-dev is not set
-# CONFIG_qtwebchannel-examples-dbg is not set
 # CONFIG_qtwebchannel-examples is not set
 # CONFIG_qtwebchannel-dbg is not set
-# CONFIG_qtwebchannel-plugins is not set
 # CONFIG_qtwebchannel-qmlplugins is not set
-# CONFIG_qtwebchannel-tools is not set
-# CONFIG_qtwebchannel-plugins-dbg is not set
-# CONFIG_qtwebchannel-qmlplugins-dbg is not set
 # CONFIG_qtwebchannel-mkspecs is not set
-# CONFIG_qtwebchannel-qmldesigner is not set
 
 #
 # qtwebkit 
@@ -3211,16 +3147,8 @@ CONFIG_packagegroup-core-ssh-dropbear=y
 #
 # CONFIG_qtwebsockets is not set
 # CONFIG_qtwebsockets-dev is not set
-# CONFIG_qtwebsockets-plugins is not set
-# CONFIG_qtwebsockets-examples-dbg is not set
-# CONFIG_qtwebsockets-plugins-dbg is not set
-# CONFIG_qtwebsockets-tools is not set
 # CONFIG_qtwebsockets-qmlplugins is not set
-# CONFIG_qtwebsockets-tools-dbg is not set
-# CONFIG_qtwebsockets-qmldesigner is not set
-# CONFIG_qtwebsockets-examples-dev is not set
 # CONFIG_qtwebsockets-examples is not set
-# CONFIG_qtwebsockets-qmlplugins-dbg is not set
 # CONFIG_qtwebsockets-mkspecs is not set
 # CONFIG_qtwebsockets-dbg is not set
 
@@ -3228,18 +3156,10 @@ CONFIG_packagegroup-core-ssh-dropbear=y
 # qtxmlpatterns 
 #
 # CONFIG_qtxmlpatterns is not set
-# CONFIG_qtxmlpatterns-examples-dbg is not set
 # CONFIG_qtxmlpatterns-mkspecs is not set
-# CONFIG_qtxmlpatterns-tools-dbg is not set
 # CONFIG_qtxmlpatterns-dbg is not set
-# CONFIG_qtxmlpatterns-plugins-dbg is not set
 # CONFIG_qtxmlpatterns-dev is not set
-# CONFIG_qtxmlpatterns-qmlplugins is not set
-# CONFIG_qtxmlpatterns-qmldesigner is not set
-# CONFIG_qtxmlpatterns-plugins is not set
 # CONFIG_qtxmlpatterns-examples is not set
-# CONFIG_qtxmlpatterns-examples-dev is not set
-# CONFIG_qtxmlpatterns-qmlplugins-dbg is not set
 # CONFIG_qtxmlpatterns-tools is not set
 
 #
@@ -4078,17 +3998,9 @@ CONFIG_bridge-utils=y
 # CONFIG_libgbm is not set
 # CONFIG_libegl-mesa is not set
 # CONFIG_mesa-dbg is not set
-# CONFIG_libwayland-egl is not set
 # CONFIG_libgles1-mesa is not set
-# CONFIG_libxvmcsoftpipe-dev is not set
 # CONFIG_libgl-mesa-dev is not set
-# CONFIG_libosmesa-dev is not set
 # CONFIG_libegl-mesa-dev is not set
-# CONFIG_libgles3-mesa is not set
-# CONFIG_libosmesa is not set
-# CONFIG_libxvmcsoftpipe is not set
-# CONFIG_libwayland-egl-dev is not set
-# CONFIG_libxatracker-dev is not set
 # CONFIG_mesa-megadriver is not set
 # CONFIG_libgles2-mesa-dev is not set
 # CONFIG_libgles1-mesa-dev is not set
@@ -4097,7 +4009,6 @@ CONFIG_bridge-utils=y
 # CONFIG_libglapi is not set
 # CONFIG_libgbm-dev is not set
 # CONFIG_libgl-mesa is not set
-# CONFIG_libxatracker is not set
 # CONFIG_libgles3-mesa-dev is not set
 
 #
@@ -4212,11 +4123,18 @@ CONFIG_bridge-utils=y
 # apps 
 #
 # CONFIG_gpio-demo is not set
+CONFIG_gpioutil=y
+# CONFIG_kmsdemo is not set
 # CONFIG_peekpoke is not set
+CONFIG_pwmdemo=y
 
 #
 # user packages 
 #
+CONFIG_libgpio=y
+CONFIG_libpwm=y
+CONFIG_libuio=y
+# CONFIG_libvrc is not set
 
 #
 # PetaLinux RootFS Settings

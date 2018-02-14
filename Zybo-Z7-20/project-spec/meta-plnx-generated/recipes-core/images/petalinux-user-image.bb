@@ -50,6 +50,7 @@ IMAGE_INSTALL = "\
 		ncurses \
 		alsa-state \
 		alsa-states \
+		udev-extraconf \
 		libstdc++ \
 		glib-2.0 \
 		ldd \
@@ -60,5 +61,10 @@ IMAGE_INSTALL = "\
 		alsa-plugins \
 		alsa-plugins-pulseaudio-conf \
 		bridge-utils \
+		gpioutil \
+		pwmdemo \
+		libgpio \
+		libpwm \
+		libuio \
 		"
 EXTRA_USERS_PARAMS = "usermod -P root root;"
