@@ -2649,7 +2649,7 @@ CONFIG_packagegroup-core-boot=y
 #
 # packagegroup-core-buildessential 
 #
-CONFIG_packagegroup-core-buildessential=y
+# CONFIG_packagegroup-core-buildessential is not set
 # CONFIG_packagegroup-core-buildessential-dev is not set
 # CONFIG_packagegroup-core-buildessential-dbg is not set
 

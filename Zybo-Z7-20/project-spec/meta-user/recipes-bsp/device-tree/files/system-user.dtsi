@@ -6,7 +6,7 @@
 	compatible = "digilent,zynq-zyboz7", "xlnx,zynq-7000";
 
 	chosen {
-		bootargs = "console=ttyPS0,115200 earlyprintk uio_pdrv_genirq.of_id=generic-uio";
+		bootargs = "console=ttyPS0,115200 earlyprintk uio_pdrv_genirq.of_id=generic-uio quiet";
 	};
 
 	usb_phy0: usb_phy@0 {
@@ -160,3 +160,8 @@
 	compatible = "generic-uio";
 };
 
+&amba {
+	xlnk {
+		compatible = "xlnx,xlnk-1.0";
+	};
+};
