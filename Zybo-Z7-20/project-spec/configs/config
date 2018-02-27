@@ -257,4 +257,5 @@ CONFIG_YOCTO_NETWORK_SSTATE_FEEDS_URL="http://petalinux.xilinx.com/sswreleases/r
 CONFIG_USER_LAYER_0=""
 
 
+
 CONFIG_SUBSYSTEM_BOOTARGS_GENERATED="console=ttyPS0,115200 earlyprintk"
