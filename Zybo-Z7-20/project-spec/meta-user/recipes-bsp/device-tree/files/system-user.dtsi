@@ -6,7 +6,7 @@
 	compatible = "digilent,zynq-zyboz7", "xlnx,zynq-7000";
 
 	chosen {
-		bootargs = "console=ttyPS0,115200 earlyprintk uio_pdrv_genirq.of_id=generic-uio quiet";
+		bootargs = "console=ttyPS0,115200 earlyprintk uio_pdrv_genirq.of_id=generic-uio quiet root=/dev/mmcblk0p2 rw rootwait";
 	};
 
 	usb_phy0: usb_phy@0 {
@@ -17,7 +17,15 @@
 		drv-vbus;
 	};
 
+	reserved-memory {
+		#address-cells = <1>;
+		#size-cells = <1>;
+		ranges;
 
+		framebuffer_reserved: framebuffer@10000000 {
+			reg = <0x10000000 0x2000000>;
+		};
+	};
 };
 
 &gem0 {
@@ -65,7 +73,7 @@
 		xlnx,encoder-slave = <&encoder_0>;
 		clocks = <&axi_dynclk_0>;
 		planes {
-			xlnx,pixel-format = "rgb888";
+			xlnx,pixel-format = "xrgb8888";
 			plane0 {
 				dmas = <&axi_vdma_1 0>;
 				dma-names = "dma0";
@@ -91,7 +99,8 @@
 	compatible = "generic-uio";
 };
 &axi_vdma_0 {
-	compatible = "generic-uio";	
+	compatible = "generic-uio";
+	/delete-node/ dma-channel@43000030;
 };
 &axi_gpio_video {
 	compatible = "generic-uio";	
