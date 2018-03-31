@@ -1,12 +1,13 @@
 /include/ "system-conf.dtsi"
 #include <dt-bindings/gpio/gpio.h>
+#include <dt-bindings/media/xilinx-vip.h>
 
 / {
 	model = "Zynq Zybo Z7 Development Board";
 	compatible = "digilent,zynq-zyboz7", "xlnx,zynq-7000";
 
 	chosen {
-		bootargs = "console=ttyPS0,115200 earlyprintk uio_pdrv_genirq.of_id=generic-uio";
+		bootargs = "console=ttyPS0,115200 earlyprintk uio_pdrv_genirq.of_id=generic-uio root=/dev/mmcblk0p2 rw rootwait loglevel=8";
 	};
 
 	usb_phy0: usb_phy@0 {
@@ -159,4 +160,174 @@
 &axi_gpio_sw_btn {
 	compatible = "generic-uio";
 };
+
+&axi_gpio_eth {
+	#gpio-cells = <3>;
+	clock-names = "s_axi_aclk";
+	clocks = <&clkc 15>;
+};
+
+/ {
+
+	pcam_clk: pcam_clk {
+		#clock-cells = <0>;
+		compatible = "fixed-clock";
+		clock-frequency = <12000000>;
+	};
+	DOVDD: fixed_regulator_DOVDD@0 {
+		compatible = "regulator-fixed";
+		regulator-name = "DOVDD_reg";
+		regulator-min-microvolt = <1800000>;
+		regulator-max-microvolt = <1800000>;
+		gpio = <&gpio0 56 GPIO_ACTIVE_HIGH>;
+		startup-delay-us = <50000>;  
+		enable-active-high;
+	};
+	AVDD: fixed_regulator_AVDD@1 {
+		compatible = "regulator-fixed";
+		regulator-name = "AVDD_reg";
+		regulator-min-microvolt = <2800000>;
+		regulator-max-microvolt = <2800000>;
+
+	};
+	DVDD: fixed_regulator_DVDD@2 {
+		compatible = "regulator-fixed";
+		regulator-name = "DVDD_reg";
+		regulator-min-microvolt = <1500000>;
+		regulator-max-microvolt = <1500000>;
+	};
+};
+
+&axi_iic_0 {
+	clocks = <&clkc 15>;
+	ov5640: camera@3c {
+		compatible = "ovti,ov5640";
+		reg = <0x3c>;
+		clocks = <&pcam_clk>;
+		clock-names = "xclk";
+		DOVDD-supply = <&DOVDD>; /* 1.8v */
+		AVDD-supply = <&AVDD>;  /* 2.8v */
+		DVDD-supply = <&DVDD>;  /* 1.5v */
+
+		powerdown-gpios = <&gpio0 58 GPIO_ACTIVE_HIGH>;
+		reset-gpios = <&gpio0 59 GPIO_ACTIVE_LOW>;
+		port {
+			ov5640_to_mipi_csi2: endpoint {
+				remote-endpoint = <&mipi_csi2_from_ov5640>;
+				clock-lanes = <0>;
+				data-lanes = <1 2>;
+			};
+		};
+	};
+};
+
+
+&mipi_csi2_rx_subsystem_0 {
+	compatible = "xlnx,mipi-csi2-rx-subsystem-2.0";
+	clocks = <&clkc 15>;
+	xlnx,max-lanes = <0x2>;
+	xlnx,dphy-present;
+	xlnx,vc = <0x4>;
+	xlnx,csi-pxl-format = "YUV422_8bit";
+	xlnx,vfb;
+	xlnx,ppc = <0x1>;
+	xlnx,axis-tdata-width = <0x10>;
+	ports {
+		#address-cells = <1>;
+		#size-cells = <0>;
+
+		port@0 {
+			reg = <0>;
+			xlnx,video-format = <XVIP_VF_YUV_422>;
+			xlnx,video-width = <8>;
+			mipi_csi2_out: endpoint {
+				remote-endpoint = <&vcap_in>;
+			};
+		};
+		port@1 {
+			reg = <1>;
+			xlnx,video-format = <XVIP_VF_YUV_422>;
+			xlnx,video-width = <8>;
+			mipi_csi2_from_ov5640: endpoint {
+				data-lanes = <1 2>;
+				remote-endpoint = <&ov5640_to_mipi_csi2>;
+			};
+
+		};
+
+	};
+};
+
+
+
+&v_frmbuf_wr_0 {
+	#dma-cells = <1>;
+	compatible = "xlnx,axi-frmbuf-wr-v2";
+	clocks = <&clkc 15>;
+	clock-names = "axis";
+	reset-gpios = <&gpio0 54 GPIO_ACTIVE_LOW>;
+	xlnx,dma-addr-width = <32>;
+	xlnx,vid-formats = "yuyv", "uyvy";
+};
+
+&amba_pl {
+	video_cap {
+		compatible = "xlnx,video";
+		dmas = <&v_frmbuf_wr_0 0>;
+		dma-names = "port0";
+
+		ports {
+			#address-cells = <1>;
+			#size-cells = <0>;
+
+			port@0 {
+				reg = <0>;
+				direction = "input";
+				vcap_in: endpoint {
+					remote-endpoint = <&mipi_csi2_out>;
+				};
+			};
+		};
+	};
+};
+
+/*
+&v_proc_ss_0 {
+	compatible = "xlnx,v-vpss-scaler";
+	clocks = <&clkc 15>;
+	xlnx,num-hori-taps = <8>;
+	xlnx,num-vert-taps = <8>;
+	xlnx,max-num-phases = <64>;
+	xlnx,max-lines = <2160>;
+	xlnx,max-pixels = <3840>;
+	xlnx,pix-per-clk = <1>;
+	reset-gpios = <&gpio0 55 GPIO_ACTIVE_LOW>;
+
+	ports {
+		#address-cells = <1>;
+		#size-cells = <0>;
+
+		port@0 {
+			reg = <0>;
+
+			xlnx,video-format = <XVIP_VF_YUV_422>;
+			xlnx,video-width = <8>;
+
+			scaler_in: endpoint {
+				remote-endpoint = <&mipi_csi2_out>;
+			};
+		};
+		port@1 {
+			reg = <1>;
+
+			xlnx,video-format = <XVIP_VF_YUV_422>;
+			xlnx,video-width = <8>;
+
+			scaler_out: endpoint {
+				remote-endpoint = <&vcap_in>;
+			};
+		};
+	};
+};
+*/
 
