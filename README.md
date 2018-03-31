@@ -159,7 +159,7 @@ Run the following commands to build the petalinux project with the default optio
 
 ```
 petalinux-build
-petalinux-package --boot --force --fsbl images/linux/zynq_fsbl.elf --fpga images/linux/system_wrapper.bit --u-boot
+petalinux-package --boot --force --fsbl images/linux/zynq_fsbl.elf --fpga images/linux/zybo_z7_20_wrapper.bit --u-boot
 ```
 
 ### Boot the newly built files from SD 
@@ -245,7 +245,7 @@ This section is only relevant for those who wish to upstream their work or versi
 Note the project should be released configured as initramfs for consistency, unless there is very good reason to release it with SD rootfs.
 
 ```
-petalinux-package --prebuilt --clean --fpga images/linux/system_wrapper.bit -a images/linux/image.ub:images/image.ub 
+petalinux-package --prebuilt --clean --fpga images/linux/zybo_z7_20_wrapper.bit -a images/linux/image.ub:images/image.ub 
 petalinux-build -x distclean
 petalinux-build -x mrproper
 petalinux-package --bsp --force --output ../releases/Petalinux-Zybo-Z7-20-20XX.X-X.bsp -p ./
