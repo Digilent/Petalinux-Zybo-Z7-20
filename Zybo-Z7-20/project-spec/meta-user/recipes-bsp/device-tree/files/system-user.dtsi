@@ -7,7 +7,7 @@
 	compatible = "digilent,zynq-zyboz7", "xlnx,zynq-7000";
 
 	chosen {
-		bootargs = "console=ttyPS0,115200 earlyprintk uio_pdrv_genirq.of_id=generic-uio root=/dev/mmcblk0p2 rw rootwait loglevel=8";
+		bootargs = "console=ttyPS0,115200 earlyprintk uio_pdrv_genirq.of_id=generic-uio";
 	};
 
 	usb_phy0: usb_phy@0 {
@@ -232,6 +232,7 @@
 	xlnx,vfb;
 	xlnx,ppc = <0x1>;
 	xlnx,axis-tdata-width = <0x10>;
+	reset-gpios = <&gpio0 57 GPIO_ACTIVE_LOW>;
 	ports {
 		#address-cells = <1>;
 		#size-cells = <0>;
@@ -267,7 +268,8 @@
 	clock-names = "axis";
 	reset-gpios = <&gpio0 54 GPIO_ACTIVE_LOW>;
 	xlnx,dma-addr-width = <32>;
-	xlnx,vid-formats = "yuyv", "uyvy";
+	xlnx,vid-formats = "yuyv", "uyvy", "nv16";
+	xlnx,pixels-per-clock = <1>;
 };
 
 &amba_pl {
