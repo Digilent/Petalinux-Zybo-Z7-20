@@ -3328,11 +3328,11 @@ CONFIG_tcf-agent=y
 #
 # v4l-utils 
 #
-# CONFIG_v4l-utils is not set
-# CONFIG_libv4l is not set
+CONFIG_v4l-utils=y
+CONFIG_libv4l=y
 # CONFIG_ir-keytable is not set
 # CONFIG_v4l-utils-dev is not set
-# CONFIG_media-ctl is not set
+CONFIG_media-ctl=y
 # CONFIG_rc-keymaps is not set
 # CONFIG_v4l-utils-dbg is not set
 # CONFIG_libv4l-dev is not set
@@ -3620,7 +3620,7 @@ CONFIG_valgrind=y
 #
 # yavta 
 #
-# CONFIG_yavta is not set
+CONFIG_yavta=y
 # CONFIG_yavta-dbg is not set
 # CONFIG_yavta-dev is not set
 

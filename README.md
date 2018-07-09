@@ -17,6 +17,7 @@ The project includes the following features by default:
 * Build essentials package group for on-board compilation using gcc, etc. 
 * HDMI output with kernel mode setting (KMS)
 * HDMI input via UIO drivers
+* Pcam 5C input via V4L2 drivers 
 * U-boot environment variables can be overriden during SD boot by including uEnv.txt
   in the root directory of the SD card (see u-boot documentation).
 
@@ -257,4 +258,41 @@ git push
 ```
 Finally, open a browser and go to github to push your .bsp as a release.
 
+## Using the Pcam 5C
+
+To use the Pcam 5C, run the following from the command line:
+
+```
+width=1920
+height=1080
+rate=15
+media-ctl -d /dev/media0 -V '"ov5640 2-003c":0 [fmt:UYVY/'"$width"x"$height"'@1/'"$rate"' field:none]'
+media-ctl -d /dev/media0 -V '"43c60000.mipi_csi2_rx_subsystem":0 [fmt:UYVY/'"$width"x"$height"' field:none]'
+v4l2-ctl -d /dev/video0 --set-fmt-video=width="$width",height="$height",pixelformat='YUYV'
+yavta -c14 -f YUYV -s "$width"x"$height" -F /dev/video0
+```
+
+Change the width, height, and rate values depending on the resolution you would like to capture
+frames at. Not all resolutions will work, currently tested modes are:
+
+1. 640x480@60Hz
+2. 1280x720@30Hz
+3. 1920x1080@15Hz
+
+The functions above will create 14 image files in your current directory. To view them,
+copy them to your host computer and run the following (you must first install ffmpeg using
+apt-get):
+
+```
+<Rename the file so it ends in .yuv>
+width=1920
+height=1080
+file=./frame-000000.yuv
+out=./frame-000000.png
+ffmpeg -s "$width"x"$height" -pix_fmt yuyv422 -i "$file" -y "$out"
+```
+
+You will need to replace the width and height to match the resolution the images
+were captured at, and the name of the input file and output file (they must end in
+.yuv and .png, respectively)
 
