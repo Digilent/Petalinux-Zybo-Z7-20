@@ -241,7 +241,7 @@
 	compatible = "xlnx,mipi-csi2-rx-subsystem-2.0";
 	clocks = <&clkc 15>;
 	xlnx,max-lanes = <0x2>;
-	xlnx,dphy-present;
+//	xlnx,dphy-present;
 	xlnx,vc = <0x4>;
 	xlnx,csi-pxl-format = "YUV422_8bit";
 	xlnx,vfb;
