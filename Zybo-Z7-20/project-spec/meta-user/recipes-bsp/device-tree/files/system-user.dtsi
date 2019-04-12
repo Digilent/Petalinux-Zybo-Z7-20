@@ -144,6 +144,12 @@
 	dmas = <&dmac_s 0 &dmac_s 1>;
 	dma-names = "tx", "rx";
 };
+
+&i2c0 {
+	clock-frequency = <100000>;
+	status = "okay";
+};
+
 &i2c1 {
 	ssm2603: ssm2603@1a{
 		#sound-dai-cells = <0>;
