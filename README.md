@@ -169,6 +169,12 @@ Follow the same steps as done with the pre-built files, except use the BOOT.BIN 
 
 ## Configure SD rootfs (alternate build configuration)
 
+#### Note: If you have made previous builds in this project, please run the following command first to delete any previous build artifacts:
+
+```
+petalinux-build -x mrproper
+```
+
 This project is initially configured to have the root file system (rootfs) existing in RAM. This configuration is referred to as "initramfs". A key 
 aspect of this configuration is that changes made to the files (for example in your /home/root/ directory) will not persist after the board has been reset. 
 This may or may not be desirable functionality.
