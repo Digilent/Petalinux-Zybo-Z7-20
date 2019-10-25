@@ -167,7 +167,7 @@ petalinux-package --boot --force --fsbl images/linux/zynq_fsbl.elf --fpga images
 
 Follow the same steps as done with the pre-built files, except use the BOOT.BIN and image.ub files found in _images/linux_.
 
-### Configure SD rootfs 
+## Configure SD rootfs 
 
 This project is initially configured to have the root file system (rootfs) existing in RAM. This configuration is referred to as "initramfs". A key 
 aspect of this configuration is that changes made to the files (for example in your /home/root/ directory) will not persist after the board has been reset. 
