@@ -1,5 +1,7 @@
 # Zybo Z7-20 Petalinux BSP Project
 
+**Note:** The demo contained in this repository has been moved and this repository is no longer being actively maintained. Check out the [Zybo Z7 Petalinux Demo](https://digilent.com/reference/programmable-logic/zybo-z7/demos/petalinux) page on Digilent Reference for more information.
+
 ## Built for Petalinux 2017.4
 
 #### Warning: You should only use this repo when it is checked out on a release tag
